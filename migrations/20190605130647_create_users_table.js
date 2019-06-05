@@ -25,5 +25,5 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   //delete changes
-  return knex.scheme.dropTableIfExists('cohorts')
+  return knex.scheme.dropTableIfExists('students')
 };
