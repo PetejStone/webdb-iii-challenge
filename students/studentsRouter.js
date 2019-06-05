@@ -27,8 +27,9 @@ router.get('/:id', validateStudentId, async (req, res) => {
     })
 })
   
-router.post('/', validatePost, (req,res) => {
+router.post('/', async (req,res) => {
     Students.add(req.body)
+    //console.log(req.body)
     .then(newItem => {    
         res.status(201).json({newItem})
     })
@@ -74,7 +75,7 @@ router.put('/:id', validateStudentId, validatePost, async (req, res) => {
   function validatePost(req, res, next) {
     const body = Object.keys(req.body);//converts object to array to get length
     const student = req.body;
-    if (student && student.name) {
+    if (student && student.name || student.cohorts_id ) {
       next();
     }
     if (body.length <= 0)  {
@@ -83,6 +84,9 @@ router.put('/:id', validateStudentId, validatePost, async (req, res) => {
     if ( !student.name ) {
       res.status(400).json({message: 'missing required name field'})
     }
+    if ( !student.cohorts_id ) {
+        res.status(400).json({message: 'missing required cohorts_id field'})
+      }
   };
 
   module.exports = router;

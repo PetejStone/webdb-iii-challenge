@@ -18,21 +18,3 @@ exports.down = function(knex, Promise) {
 
 
 
-// // new changes to the db schema (structure of db)
-// exports.up = function(knex, Promise) {
-//   return knex.schema.createTable('roles', function(tbl) {
-//       //primary key called id, auto increments, integer
-//     tbl.increments();
-
-//     //a varchar called name, 128, unique, not null
-//     tbl.string('name', 128)
-//     .notNullable()
-//     .unique()
-    
-//   })
-// };
-// //how to undo the changes to the schema from above
-// exports.down = function(knex, Promise) {
-//   //drop = delete in tables
-//   return knex.schema.dropTableIfExists('roles');
-// };
